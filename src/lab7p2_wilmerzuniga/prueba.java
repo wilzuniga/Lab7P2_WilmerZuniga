@@ -22,14 +22,23 @@ public class prueba {
             System.out.println(cosos[i]);
 //            if(cosos[i].equals(cosos))
             String[] cososos = cosos[i].split(",");
-            for (int j = 0; j < cososos.length; j++) {
-                System.out.println(cososos[j]);
-            }
 
+            for (int j = 0; j < cososos.length; j++) {
+                System.out.println(cososos[j] + " atributos");
+
+            }
 
         }
         
-        
+        for (int i = 0; i < cosos.length; i++) {
+             String[] cosossos = cosos[i].split(":");
+
+            for (int j = 0; j < cosossos.length; j++) {
+                System.out.println(cosossos[j] + " hija");
+
+            }
+        }
+
     }
 
 }
