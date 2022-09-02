@@ -1,14 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab7p2_wilmerzuniga;
 
-/**
- *
- * @author wilme
- */
+import java.util.ArrayList;
+
+
 public class Cargado {
-    
+    private int Tamaño;
+    private int Edad;
+    private ArrayList Comidos = new ArrayList();
+
+    public Cargado() {
+    }
+
+    public Cargado(int Tamaño, int Edad) {
+        this.Tamaño = Tamaño;
+        this.Edad = Edad;
+    }
+
+    public int getTamaño() {
+        return Tamaño;
+    }
+
+    public void setTamaño(int Tamaño) {
+        this.Tamaño = Tamaño;
+    }
+
+    public int getEdad() {
+        return Edad;
+    }
+
+    public void setEdad(int Edad) {
+        this.Edad = Edad;
+    }
+
+    public ArrayList getComidos() {
+        return Comidos;
+    }
+
+    public void setComidos(ArrayList Comidos) {
+        this.Comidos = Comidos;
+    }
+
+    @Override
+    public String toString() {
+        return "Cargado{" + "Tama\u00f1o=" + Tamaño + ", Edad=" + Edad + ", Comidos=" + Comidos + '}';
+    }
 }
