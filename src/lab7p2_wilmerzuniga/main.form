@@ -140,14 +140,14 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="TFAggPerwsonaZMB" min="-2" pref="72" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="BTNAggPerwsonaZMB" min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="BTNAggPerwsonaZMB" min="-2" pref="46" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="BTNAggPerwsonaZMB1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="TFDireccionImagenZMB" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="86" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -302,11 +302,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="+"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNAggPerwsonaZMBActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BTNAggPerwsonaZMB1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear zombie"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNAggPerwsonaZMB1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

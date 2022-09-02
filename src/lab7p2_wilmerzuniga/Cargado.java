@@ -16,6 +16,16 @@ public class Cargado extends Zombies {
         this.Edad = Edad;
     }
 
+    public Cargado(int Tamaño, int Edad, String Nombre, double Ataque, double Vida, ArrayList Comidos) {
+        super(Nombre, Ataque, Vida);
+        this.Tamaño = Tamaño;
+        this.Edad = Edad;
+        this.Comidos = Comidos;
+    }
+
+
+    
+
     public int getTamaño() {
         return Tamaño;
     }
