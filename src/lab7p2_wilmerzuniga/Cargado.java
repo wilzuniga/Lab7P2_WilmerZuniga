@@ -3,7 +3,7 @@ package lab7p2_wilmerzuniga;
 import java.util.ArrayList;
 
 
-public class Cargado {
+public class Cargado extends Zombies {
     private int Tamaño;
     private int Edad;
     private ArrayList Comidos = new ArrayList();
@@ -38,6 +38,19 @@ public class Cargado {
 
     public void setComidos(ArrayList Comidos) {
         this.Comidos = Comidos;
+    }
+    
+    
+    
+    public String printArrayl(ArrayList Comidos){
+        String coso = "(";
+        for (Object Comido : Comidos) {
+            coso+= Comido + ","; 
+        }
+        
+        coso+= ")";
+        
+        return coso;
     }
 
     @Override

@@ -23,21 +23,21 @@ public class administrarZombies {
         this.archivo = archivo;
     }
 
-    public ArrayList<Persona> getListaPersonas() {
+    public ArrayList<Zombies> getListaZombies() {
         return listaZombies;
     }
 
-    public void setListaPersonas(ArrayList<Persona> listaPersonas) {
-        this.listaZombies = listaPersonas;
+    public void setListaZombies(ArrayList<Zombies> listaZombies) {
+        this.listaZombies = listaZombies;
     }
 
     @Override
     public String toString() {
-        return "listaPersonas=" + listaZombies;
+        return "listaZombies=" + listaZombies;
     }
 
     //extra mutador
-    public void setPersona(Persona p) {
+    public void setZombies(Zombies p) {
         this.listaZombies.add(p);
     }
 
@@ -50,11 +50,24 @@ public class administrarZombies {
         try {
             fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
-            for (Persona t : listaZombies) {
-                bw.write(t.getCodigo() + ";");
-                bw.write(t.getNombre() + ";");
-                bw.write(t.getedad() + ";");
-                bw.write(WritteHobbies(t.getHobbies()));
+            for (Zombies t : listaZombies) {
+                bw.write("Nombre=" + t.getNombre() + ",");
+                bw.write("Ataque=" + t.getAtaque() + ",");
+                bw.write("Vida=" + t.getVida() + "_");
+
+                if (t instanceof Cargado) {
+                    bw.write("Cargado:(");
+                    bw.write("Edad=" + ((Cargado) t).getEdad() + ";");
+                    bw.write("Comidos=" + ((Cargado) t).printArrayl(((Cargado) t).getComidos()) + ";");
+                    bw.write("Tamaño=" + ((Cargado) t).getTamaño() + ")");
+                } else if (t instanceof Clasico) {
+                    bw.write("Clasico:(");
+                    bw.write("Experiencia=" + ((Clasico) t).getExperiencia() + ";");
+                    bw.write("Bandera=" + "[");
+                    bw.write("Direccion:" + ((Clasico) t).getBanderas().getDireccion()+ ",");
+                    bw.write("Color:" + ((Clasico) t).getBanderas().getColor()+ "])");
+                }
+                bw.write("|");
             }
             bw.flush();//pasar al rom
         } catch (Exception ex) {
@@ -63,45 +76,6 @@ public class administrarZombies {
         fw.close();
     }
 
-//    public void cargarArchivo() {
-//        Scanner sc = null;
-//        listaZombies = new ArrayList();
-//        if (archivo.exists()) {
-//            try {
-//                sc = new Scanner(archivo);
-//                sc.useDelimiter(";");
-//                while (sc.hasNext()) {
-//                    
-//                    listaZombies.add(new Persona(sc.nextInt(),
-//                            sc.next(),
-//                            sc.nextInt()
-//                    )
-//                    );
-//                }
-//            } catch (Exception ex) {
-//            }
-//            sc.close();
-//        }//FIN IF
-//    }
-//
-//    public void escribirArchivoH() throws IOException {
-//        FileWriter fw = null;
-//        BufferedWriter bw = null;
-//        try {
-//            fw = new FileWriter(archivo, false);
-//            bw = new BufferedWriter(fw);
-//            for (Persona t : listaZombies) {
-//                bw.write(t.getCodigo() + ";");
-//                bw.write(t.getNombre() + ";");
-//                bw.write(t.getedad() + ";");
-//
-//            }
-//            bw.flush();//pasar al rom
-//        } catch (Exception ex) {
-//        }
-//        bw.close();
-//        fw.close();
-//    }
     public void cargarArchivo() {
         Scanner sc = null;
         listaZombies = new ArrayList();
@@ -110,45 +84,29 @@ public class administrarZombies {
         if (archivo.exists()) {
             try {
                 sc = new Scanner(archivo);
-                sc.useDelimiter(";");
-                while (sc.hasNext()) {
-                    listaZombies.add(new Persona(sc.nextInt(),
-                            sc.next(),
-                            sc.nextInt(),
-                            Hobbies(sc.next())
-                    ));
-
+                coso = sc.nextLine();//fucking archivo como texto
+                String[] cosos1 = coso.split("\\|");
+                for (int i = 0; i < cosos1.length; i++) {
+                    String[] cosos2 = cosos1[i].split("_");
+                    for (int j = 0; j < cosos2.length; j++) {
+                        String[] cosos3 = cosos2[j].split(",");
+                    }
                 }
+                
+                
+//                sc.useDelimiter("|");
+//                while (sc.hasNext()) {
+//                    listaZombies.add(new Zombies(sc.nextInt(),
+//                            sc.next(),
+//                            sc.nextInt(),
+//                            Hobbies(sc.next())
+//                    ));
+//
+//                }
             } catch (Exception ex) {
             }
             sc.close();
         }//FIN IF
-    }
-
-    public ArrayList Hobbies(String Cosa) {
-//        System.out.println(Cosa);
-
-        ArrayList<String> Hobbies = new ArrayList();
-        String[] hobbies = Cosa.split("-");
-
-        for (String hobby : hobbies) {
-
-            Hobbies.add(hobby);
-        }
-
-        return Hobbies;
-    }
-
-    public String WritteHobbies(ArrayList Cosa) {
-
-        String Hobbies = "";
-
-        for (Object object : Cosa) {
-            Hobbies += object + "-";
-            //System.out.println(Hobbies);
-        }
-        Hobbies += ";";
-        return Hobbies;
     }
 
 }
