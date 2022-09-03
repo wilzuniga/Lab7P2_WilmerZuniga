@@ -5,9 +5,14 @@
  */
 package lab7p2_wilmerzuniga;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -34,6 +39,9 @@ public class main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        AREATEXT = new javax.swing.JTextArea();
+        PELEAR = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -83,6 +91,11 @@ public class main extends javax.swing.JFrame {
         Dureza = new javax.swing.JTextField();
 
         Eliminar.setText("jMenuItem3");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(Eliminar);
 
         Imprimir.setText("jMenuItem3");
@@ -118,21 +131,39 @@ public class main extends javax.swing.JFrame {
         jTree1.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jTree1);
 
+        AREATEXT.setColumns(20);
+        AREATEXT.setRows(5);
+        jScrollPane2.setViewportView(AREATEXT);
+
+        PELEAR.setText("PELEA");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(PELEAR)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(PELEAR)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Test", jPanel1);
@@ -184,7 +215,7 @@ public class main extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(TFColBANDERAZMB))
@@ -228,7 +259,7 @@ public class main extends javax.swing.JFrame {
                             .addComponent(jLabel16)
                             .addComponent(BTNAggPerwsonaZMB1)
                             .addComponent(TFDireccionImagenZMB, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(86, Short.MAX_VALUE))))
+                        .addContainerGap(130, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +307,7 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TFColBANDERAZMB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Zombies", jPanel3);
@@ -357,7 +388,7 @@ public class main extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TFNOMBREPLT, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                             .addComponent(TFVIDAPLT))
-                        .addGap(18, 38, Short.MAX_VALUE)
+                        .addGap(18, 82, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BTCREARPLT)
                             .addComponent(TFATAQUEPLT, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -393,7 +424,7 @@ public class main extends javax.swing.JFrame {
                             .addComponent(BTCREARPLT))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -430,16 +461,16 @@ public class main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -451,6 +482,7 @@ public class main extends javax.swing.JFrame {
         } else {
             listaZombies.add(new Cargado(Integer.parseInt(TFTAMAÑOZMB.getText()), Integer.parseInt(TFedadZMB.getText()), TFNOMBREZMB.getText(), Double.parseDouble(TFAtaqueZMB.getText()), Double.parseDouble(TFVidaZMB.getText()), listakills));
         }
+        actualizarfingarbol();
     }//GEN-LAST:event_BTNAggPerwsonaZMB1ActionPerformed
 
     private void BTNAggPerwsonaZMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAggPerwsonaZMBActionPerformed
@@ -471,7 +503,18 @@ public class main extends javax.swing.JFrame {
         System.out.println(listaplantas);
     }//GEN-LAST:event_BTCREARPLTActionPerformed
 
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        DefaultTreeModel m
+                = (DefaultTreeModel) jTree1.getModel();
+        Object V1 = jTree1.getSelectionPath().getLastPathComponent();
+        nodo_seleccionado = (DefaultMutableTreeNode) V1;
+        m.removeNodeFromParent(
+               nodo_seleccionado);
+        m.reload();    }//GEN-LAST:event_EliminarActionPerformed
+
     public void actualizarfingarbol() {
+         arbol();
+        
         for (Plantas planta : listaplantas) {
             DefaultTreeModel m = (DefaultTreeModel) jTree1.getModel();
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
@@ -509,9 +552,70 @@ public class main extends javax.swing.JFrame {
             }
 
             m.reload();
+            
 
         }
+        
 
+    }
+
+    public void escribirArchivo() throws IOException {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        String coso = "";
+
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+            for (Zombies t : listaZombies) {
+                bw.write("Nombre=" + t.getNombre() + ",");
+                bw.write("Ataque=" + t.getAtaque() + ",");
+                bw.write("Vida=" + t.getVida() + "_");
+
+                if (t instanceof Cargado) {
+                    bw.write("Cargado:(");
+                    bw.write("Edad=" + ((Cargado) t).getEdad() + ";");
+                    bw.write("Comidos=" + ((Cargado) t).printArrayl(((Cargado) t).getComidos()) + ";");
+                    bw.write("Tamaño=" + ((Cargado) t).getTamaño() + ")");
+                } else if (t instanceof Clasico) {
+                    bw.write("Clasico:(");
+                    bw.write("Experiencia=" + ((Clasico) t).getExperiencia() + ";");
+                    bw.write("Bandera=" + "[");
+                    bw.write("Direccion:" + ((Clasico) t).getBanderas().getDireccion() + ",");
+                    bw.write("Color:" + ((Clasico) t).getBanderas().getColor() + "])");
+                }
+                bw.write("|");
+            }
+            bw.flush();//pasar al rom
+        } catch (Exception ex) {
+        }
+        bw.close();
+        fw.close();
+    }
+    
+    public void arbol(){
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Entidades");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Zombies");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Clasico");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cargado");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Plantas");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Explosiva");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Disparo");
+        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Bajo");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Medio");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Alto");
+        treeNode3.add(treeNode4);
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Defensa");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
     }
 
     public static void main(String args[]) {
@@ -545,10 +649,13 @@ public class main extends javax.swing.JFrame {
             }
         });
     }
+    DefaultMutableTreeNode nodo_seleccionado;
+    private File archivo = new File("./Personas.txt");
     private ArrayList<Plantas> listaplantas = new ArrayList();
     private ArrayList<String> listakills = new ArrayList();
     private ArrayList<Zombies> listaZombies = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AREATEXT;
     private javax.swing.JButton BTCREARPLT;
     private javax.swing.JButton BTNAggPerwsonaZMB;
     private javax.swing.JButton BTNAggPerwsonaZMB1;
@@ -558,6 +665,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem Elegir;
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem Imprimir;
+    private javax.swing.JButton PELEAR;
     private javax.swing.JTextField TFALTURAPLT;
     private javax.swing.JTextField TFATAQUEPLT;
     private javax.swing.JTextField TFAggPerwsonaZMB;
@@ -602,6 +710,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
