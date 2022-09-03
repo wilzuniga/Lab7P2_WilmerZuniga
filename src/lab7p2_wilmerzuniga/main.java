@@ -140,6 +140,11 @@ public class main extends javax.swing.JFrame {
         jScrollPane2.setViewportView(AREATEXT);
 
         PELEAR.setText("PELEA");
+        PELEAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PELEARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -534,6 +539,18 @@ public class main extends javax.swing.JFrame {
                nodo_seleccionado);
         m.reload();    }//GEN-LAST:event_EliminarActionPerformed
 
+    private void PELEARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PELEARActionPerformed
+        for (int i = 0; i < listaZombies.size(); i++) {
+            if (listaZombies.get(i).getAtaque() > listaplantas.get(i).getAtaque()){
+                AREATEXT.append(listaZombies.get(i).getNombre() + " le gano a la planta seleccionada,");  
+            }else{
+                AREATEXT.append(listaplantas.get(i).getNombre() + " le gano a el zombie seleccionada,");
+            }
+
+        }
+        
+    }//GEN-LAST:event_PELEARActionPerformed
+
     public void actualizarfingarbol() {
          arbol();
         
@@ -623,7 +640,7 @@ public class main extends javax.swing.JFrame {
         if (archivo.exists()) {
             try {
                 sc = new Scanner(archivo);
-                sc.useDelimiter(";");
+                sc.useDelimiter("_");
                 while (sc.hasNext()) {
                     listaZombies.add(new Zombies(sc.nextInt(),
                             sc.next(),
