@@ -5,7 +5,8 @@
  */
 package lab7p2_wilmerzuniga;
 
-public class Disparo extends Plantas{
+public class Disparo extends Plantas {
+
     private String NombreProyectil;
     private String Color;
 
@@ -41,8 +42,7 @@ public class Disparo extends Plantas{
 
     @Override
     public String toString() {
-        return "Disparo{" + "NombreProyectil=" + NombreProyectil + ", Color=" + Color + '}';
+        return "Disparo{" + super.toString() + "NombreProyectil=" + NombreProyectil + ", Color=" + Color + '}';
     }
-    
-    
+
 }

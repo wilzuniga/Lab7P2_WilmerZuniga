@@ -34,7 +34,7 @@ public class Explosiva extends Plantas{
 
     @Override
     public String toString() {
-        return "Explosiva{" + "Magnitud=" + Magnitud + '}';
+        return "Explosiva{" +super.toString() + "Magnitud=" + Magnitud + '}';
     }
 
     

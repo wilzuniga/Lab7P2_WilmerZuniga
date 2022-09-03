@@ -51,7 +51,7 @@ public class Defensa extends Plantas{
 
     @Override
     public String toString() {
-        return "Defensa{" + "Altura=" + Altura + ", Dureza=" + Dureza + ", peso=" + peso + '}';
+        return "Defensa{" +super.toString() + "Altura=" + Altura + ", Dureza=" + Dureza + ", peso=" + peso + '}';
     }
     
     

@@ -45,6 +45,6 @@ public class Clasico extends Zombies{
 
     @Override
     public String toString() {
-        return "Clasico{" + "Experiencia=" + Experiencia + ", Banderas=" + Banderas + '}';
+        return "Clasico{" +super.toString() + "Experiencia=" + Experiencia + ", Banderas=" + Banderas + '}';
     }
 }
