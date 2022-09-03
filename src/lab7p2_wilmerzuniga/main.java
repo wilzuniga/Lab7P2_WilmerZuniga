@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.event.KeyEvent;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +28,7 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        // siemp = jTree1.getModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -90,7 +94,7 @@ public class main extends javax.swing.JFrame {
         TFCPLORPLT = new javax.swing.JTextField();
         Dureza = new javax.swing.JTextField();
 
-        Eliminar.setText("jMenuItem3");
+        Eliminar.setText("Eliminar");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarActionPerformed(evt);
@@ -98,10 +102,10 @@ public class main extends javax.swing.JFrame {
         });
         jPopupMenu1.add(Eliminar);
 
-        Imprimir.setText("jMenuItem3");
+        Imprimir.setText("Elegir");
         jPopupMenu1.add(Imprimir);
 
-        Elegir.setText("jMenuItem3");
+        Elegir.setText("Imprimir");
         jPopupMenu1.add(Elegir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -482,7 +486,13 @@ public class main extends javax.swing.JFrame {
         } else {
             listaZombies.add(new Cargado(Integer.parseInt(TFTAMAÑOZMB.getText()), Integer.parseInt(TFedadZMB.getText()), TFNOMBREZMB.getText(), Double.parseDouble(TFAtaqueZMB.getText()), Double.parseDouble(TFVidaZMB.getText()), listakills));
         }
+        
         actualizarfingarbol();
+        try {
+            escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_BTNAggPerwsonaZMB1ActionPerformed
 
     private void BTNAggPerwsonaZMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAggPerwsonaZMBActionPerformed
@@ -508,6 +518,18 @@ public class main extends javax.swing.JFrame {
                 = (DefaultTreeModel) jTree1.getModel();
         Object V1 = jTree1.getSelectionPath().getLastPathComponent();
         nodo_seleccionado = (DefaultMutableTreeNode) V1;
+        
+        for (Plantas listaplanta : listaplantas) {
+            if(listaplanta.getNombre().equals(nodo_seleccionado)){
+                listaplantas.remove(listaplanta);
+            }
+        }
+        
+        for (Zombies listaZomby : listaZombies) {
+            if(listaZomby.getNombre().equals(listaZombies)){
+                listaZombies.remove(listaZomby);
+            }
+        }
         m.removeNodeFromParent(
                nodo_seleccionado);
         m.reload();    }//GEN-LAST:event_EliminarActionPerformed
@@ -592,6 +614,29 @@ public class main extends javax.swing.JFrame {
         bw.close();
         fw.close();
     }
+
+    public void cargarArchivo() {
+        Scanner sc = null;
+        listaZombies = new ArrayList();
+        String coso = "";
+
+        if (archivo.exists()) {
+            try {
+                sc = new Scanner(archivo);
+                sc.useDelimiter(";");
+                while (sc.hasNext()) {
+                    listaZombies.add(new Zombies(sc.nextInt(),
+                            sc.next(),
+                            sc.nextInt(),
+                            
+                    ));
+
+                }
+            } catch (Exception ex) {
+            }
+            sc.close();
+        }//FIN IF
+    }
     
     public void arbol(){
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Entidades");
@@ -650,7 +695,7 @@ public class main extends javax.swing.JFrame {
         });
     }
     DefaultMutableTreeNode nodo_seleccionado;
-    private File archivo = new File("./Personas.txt");
+    private File archivo = new File("./Zombies.txt");
     private ArrayList<Plantas> listaplantas = new ArrayList();
     private ArrayList<String> listakills = new ArrayList();
     private ArrayList<Zombies> listaZombies = new ArrayList();

@@ -1,1 +1,1 @@
-Ataque=100.0,Vida=400.0,Nombre=Clasico_Clasico:(Experiencia=3;Bandera=[Direccion:DiscoC,Color:Rojo])|Ataque=150.0,Vida=200.0,Nombre=Furioso_Cargado:(Edad=35;Comidos={Bryan,Diego,Alex};Tamano=170)|Ataque=2000.0,Vida=700.0,Nombre=Zombienstein_Clasico:(Experiencia=30;Bandera=[Color:,Direccion:])
+Nombre=1234,Ataque=1234.0,Vida=1234.0_Cargado:(Edad=1234;Comidos=(1234,1234,);Tamaño=1234)|Nombre=1234,Ataque=1234.0,Vida=1234.0_Cargado:(Edad=1234;Comidos=(1234,1234,);Tamaño=1234)|
